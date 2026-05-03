@@ -1,0 +1,130 @@
+<view class="container">
+  <!-- 分享图标 -->
+  <view class="share-icon" bindtap="showSharePanel">
+    <text>📤</text>
+  </view>
+  
+  <!-- 学习概览 -->
+  <view class="overview">
+    <view class="overview-item">
+      <text class="overview-value">{{totalStudyHours}}</text>
+      <text class="overview-label">学习时长(小时)</text>
+    </view>
+    <view class="overview-item">
+      <text class="overview-value">{{totalNotes}}</text>
+      <text class="overview-label">笔记数量</text>
+    </view>
+    <view class="overview-item">
+      <text class="overview-value">{{totalReviews}}</text>
+      <text class="overview-label">复习次数</text>
+    </view>
+    <view class="overview-item">
+      <text class="overview-value">{{masteryPercent}}</text>
+      <text class="overview-label">知识点掌握度</text>
+    </view>
+  </view>
+  
+  <!-- 考点热度分析 -->
+  <view class="section">
+    <text class="section-title">考点热度分析</text>
+    <view class="chart-card">
+      <ec-canvas id="heatChart" canvas-id="heatChart" ec="{{ heatChartOption }}"></ec-canvas>
+    </view>
+  </view>
+  
+  <!-- 学习记录 -->
+  <view class="section">
+    <text class="section-title">学习记录</text>
+    <view class="record-cards">
+      <view class="record-card" bindtap="goTimelineDetail" data-type="studyTime">
+        <view class="record-icon time-icon">
+          <text>🕒</text>
+        </view>
+        <view class="record-value">{{recordHours}}</view>
+        <view class="record-label">小时</view>
+      </view>
+      <view class="record-card" bindtap="goTimelineDetail" data-type="noteCount">
+        <view class="record-icon note-icon">
+          <text>📄</text>
+        </view>
+        <view class="record-value">{{recordNotes}}</view>
+        <view class="record-label">篇</view>
+      </view>
+      <view class="record-card" bindtap="goTimelineDetail" data-type="reviewCount">
+        <view class="record-icon review-icon">
+          <text>🔄</text>
+        </view>
+        <view class="record-value">{{recordReviews}}</view>
+        <view class="record-label">次</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 学习趋势 -->
+  <view class="section">
+    <text class="section-title">学习趋势</text>
+    <view class="chart-tabs">
+      <view class="chart-tab {{activeTab === 'curve' ? 'active' : ''}}" bindtap="switchTab" data-tab="curve">
+        <text>学习曲线</text>
+      </view>
+      <view class="chart-tab {{activeTab === 'radar' ? 'active' : ''}}" bindtap="switchTab" data-tab="radar">
+        <text>掌握度雷达</text>
+      </view>
+    </view>
+    <view class="chart-card">
+      <ec-canvas wx:if="{{activeTab === 'curve'}}" id="trendChart" canvas-id="trendChart" ec="{{ trendChartOption }}"></ec-canvas>
+      <ec-canvas wx:else id="radarChart" canvas-id="radarChart" ec="{{ radarChartOption }}"></ec-canvas>
+    </view>
+  </view>
+  
+  <!-- 全套可视化 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">全套可视化</text>
+      <view class="export-btn" bindtap="exportReport">
+        <text>导出报告</text>
+      </view>
+    </view>
+    <view class="chart-matrix">
+      <!-- 左上-柱状图：各章节学习时间分布 -->
+      <view class="chart-cell">
+        <view class="chart-title">章节学习时间分布</view>
+        <view class="chart-container">
+          <ec-canvas id="chapterChart" canvas-id="chapterChart" ec="{{ chapterChartOption }}"></ec-canvas>
+        </view>
+      </view>
+      
+      <!-- 右上-饼图：笔记内容分类占比 -->
+      <view class="chart-cell">
+        <view class="chart-title">笔记内容分类占比</view>
+        <view class="chart-container">
+          <ec-canvas id="categoryChart" canvas-id="categoryChart" ec="{{ categoryChartOption }}"></ec-canvas>
+        </view>
+      </view>
+      
+      <!-- 左下-折线图：每周平均专注度 -->
+      <view class="chart-cell">
+        <view class="chart-title">每周平均专注度</view>
+        <view class="chart-container">
+          <ec-canvas id="focusChart" canvas-id="focusChart" ec="{{ focusChartOption }}"></ec-canvas>
+        </view>
+      </view>
+      
+      <!-- 右下-词云：高频关键词云 -->
+      <view class="chart-cell">
+        <view class="chart-title">高频关键词云</view>
+        <view class="chart-container">
+          <ec-canvas id="wordCloudChart" canvas-id="wordCloudChart" ec="{{ wordCloudChartOption }}"></ec-canvas>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 分享面板 -->
+  <share-panel 
+    show="{{showSharePanel}}" 
+    page-type="report" 
+    page-data="{{pageData}}" 
+    bind:close="closeSharePanel"
+  />
+</view>

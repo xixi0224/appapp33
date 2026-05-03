@@ -1,0 +1,303 @@
+page {
+  background: #f7f8fa;
+  color: #1f1f1f;
+  font-size: 28rpx;
+}
+
+.container {
+  padding: 24rpx;
+  min-height: 100vh;
+}
+
+.user-info {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 6rpx 24rpx rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.user-info:active {
+  transform: scale(0.98);
+}
+
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #1677ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.avatar text {
+  font-size: 50rpx;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.username {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  display: block;
+  color: #333;
+}
+
+.user-desc {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.user-arrow {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.stats-grid {
+  display: flex;
+  gap: 20rpx;
+}
+
+.stat-item {
+  flex: 1;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  text-align: center;
+  box-shadow: 0 6rpx 24rpx rgba(0,0,0,0.04);
+}
+
+.stat-value {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1677ff;
+  margin-bottom: 5rpx;
+  display: block;
+}
+
+.stat-label {
+  font-size: 20rpx;
+  color: #666;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20rpx;
+}
+
+.tool-item {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 6rpx 24rpx rgba(0,0,0,0.04);
+  transition: transform 0.2s;
+}
+
+.tool-item:active {
+  transform: scale(0.95);
+}
+
+.tool-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-bottom: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+}
+
+.tool-icon.pomodoro {
+  background-color: #fff2e8;
+  color: #fa8c16;
+}
+
+.tool-icon.word {
+  background-color: #f6ffed;
+  color: #52c41a;
+}
+
+.tool-icon.pdf {
+  background-color: #e6f7ff;
+  color: #1677ff;
+}
+
+.tool-icon.calc {
+  background-color: #f9f0ff;
+  color: #722ed1;
+}
+
+.tool-icon.plan {
+  background-color: #fff7e6;
+  color: #fa8c16;
+}
+
+.tool-text {
+  font-size: 20rpx;
+  color: #333;
+}
+
+.action-list {
+  background: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 6rpx 24rpx rgba(0,0,0,0.04);
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.action-item:last-child {
+  border-bottom: none;
+}
+
+.action-icon {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+}
+
+.action-icon.pdf {
+  background-color: #e6f7ff;
+  color: #1677ff;
+}
+
+.action-icon.graph {
+  background-color: #f6ffed;
+  color: #52c41a;
+}
+
+.action-icon.wechat {
+  background-color: #e6f7ff;
+  color: #1677ff;
+}
+
+.action-icon.qrcode {
+  background-color: #f9f0ff;
+  color: #722ed1;
+}
+
+.action-icon.setting {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.action-icon.about {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.action-icon.feedback {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.action-text {
+  flex: 1;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.action-arrow {
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 2rpx solid #999;
+  border-right: 2rpx solid #999;
+  transform: rotate(45deg);
+}
+
+/* 图标样式 */
+.pomodoro::before {
+  content: "🍅";
+}
+
+.word::before {
+  content: "📝";
+}
+
+.pdf::before {
+  content: "📄";
+}
+
+.calc::before {
+  content: "🧮";
+}
+
+.plan::before {
+  content: "📅";
+}
+
+.graph::before {
+  content: "📊";
+}
+
+.wechat::before {
+  content: "💬";
+}
+
+.qrcode::before {
+  content: "📱";
+}
+
+.setting::before {
+  content: "⚙️";
+}
+
+.about::before {
+  content: "ℹ️";
+}
+
+.feedback::before {
+  content: "💡";
+}
+
+.logout::before {
+  content: "🚪";
+}
+
+.logout-item {
+  background: #fff1f0;
+}
+
+.logout-item:active {
+  background: #ffccc7;
+}
+
+.logout-text {
+  color: #ff4d4f;
+  font-weight: bold;
+}

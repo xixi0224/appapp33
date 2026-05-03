@@ -1,0 +1,129 @@
+<view class="container">
+  <!-- 我的笔记 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">我的笔记</text>
+      <text class="section-more" bindtap="goAllNotes">查看全部</text>
+    </view>
+    
+
+    
+    <!-- 笔记列表 -->
+    <view class="notes-list">
+      <block wx:if="{{loading}}">
+        <view class="loading-state">
+          <text class="loading-text">加载中...</text>
+        </view>
+      </block>
+      <block wx:elif="{{filteredNotes.length > 0}}">
+        <view class="note-card" wx:for="{{filteredNotes}}" wx:key="id" bindtap="goNoteDetail" data-id="{{item.id}}" data-title="{{item.title}}">
+          <view class="note-title">{{item.title}}</view>
+          <view class="note-info">
+            <text class="note-source">{{item.source}}</text>
+            <text class="note-date">{{item.date}}</text>
+          </view>
+          <view class="note-tags">
+            <view class="note-tag {{tagItem.className}}" wx:for="{{item.tags}}" wx:key="tagIndex" wx:for-item="tagItem">{{tagItem.name}}</view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="empty-state">
+          <text class="empty-text">暂无笔记</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  
+  <!-- 知识图谱 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">知识图谱</text>
+      <text class="section-more" bindtap="goKnowledgeGraph">查看详情</text>
+    </view>
+    <view class="graph-card" bindtap="goKnowledgeGraph">
+      <block wx:if="{{hasGraph}}">
+        <view class="graph-preview-real">
+          <view class="graph-node-list">
+            <view 
+              class="graph-node-item {{item.isTheme ? 'theme-node' : ''}} {{item.isExamPoint ? 'exam-node' : ''}}" 
+              wx:for="{{graphNodes}}" 
+              wx:key="id"
+              style="border-color: {{item.color}};"
+            >
+              <view class="node-dot" style="background-color: {{item.color}};"></view>
+              <text class="node-name">{{item.name}}</text>
+              <text class="node-tag" style="color: {{item.color}};">{{item.typeLabel}}</text>
+            </view>
+          </view>
+          <view class="graph-stats">
+            <text class="stats-text">共 {{graphNodes.length}} 个核心节点</text>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="graph-preview">
+          <view class="graph-animation">
+            <view class="graph-node center"></view>
+            <view class="graph-node node-1"></view>
+            <view class="graph-node node-2"></view>
+            <view class="graph-node node-3"></view>
+            <view class="graph-node node-4"></view>
+            <view class="graph-node node-5"></view>
+            <view class="graph-line line-1"></view>
+            <view class="graph-line line-2"></view>
+            <view class="graph-line line-3"></view>
+            <view class="graph-line line-4"></view>
+            <view class="graph-line line-5"></view>
+          </view>
+        </view>
+        <text class="graph-desc">探索图谱</text>
+      </block>
+    </view>
+  </view>
+  
+  <!-- 学习计划 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">学习计划</text>
+      <text class="section-more" bindtap="goLearningPlan">查看详情</text>
+    </view>
+    <view class="plan-card" bindtap="goLearningPlan">
+      <block wx:if="{{hasPlan}}">
+        <view class="plan-header">
+          <text class="plan-title">{{planData.examSubject}}</text>
+          <text class="plan-days">距考试 {{planData.remainingDays}} 天</text>
+        </view>
+        <view class="plan-progress">
+          <text class="progress-label">总进度</text>
+          <view class="progress-bar">
+            <view class="progress-fill" style="width: {{planData.totalProgress}}%"></view>
+          </view>
+          <text class="progress-value">{{planData.totalProgress}}%</text>
+        </view>
+        <view class="today-tasks">
+          <text class="tasks-title">今日任务</text>
+          <block wx:if="{{planData.todayTasks.length > 0}}">
+            <view class="task-list">
+              <view class="task-item {{task.completed ? 'completed' : ''}}" wx:for="{{planData.todayTasks}}" wx:key="id">
+                <view class="task-check {{task.completed ? 'checked' : ''}}"></view>
+                <text class="task-text">{{task.name}}</text>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="task-empty">
+              <text class="task-empty-text">今日暂无任务安排</text>
+            </view>
+          </block>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="empty-state">
+          <text class="empty-text">暂无学习计划</text>
+          <text class="empty-hint">点击去创建专属学习计划</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

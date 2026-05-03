@@ -1,0 +1,173 @@
+page {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.container {
+  min-height: 100vh;
+}
+
+/* PDF文件列表 */
+.pdf-list {
+  padding: 20rpx;
+}
+
+.list-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.pdf-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.pdf-item {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.pdf-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #f0f0f0;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.pdf-info {
+  flex: 1;
+}
+
+.pdf-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.pdf-date {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.pdf-arrow {
+  font-size: 32rpx;
+  color: #999999;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+/* PDF阅读界面 */
+.pdf-viewer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.back-button {
+  background-color: #f0f0f0;
+  color: #333333;
+  border: none;
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+}
+
+.pdf-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  flex: 1;
+  text-align: center;
+  margin: 0 20rpx;
+}
+
+.tool-button {
+  background-color: #1677ff;
+  color: #ffffff;
+  border: none;
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+}
+
+.viewer-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-text {
+  font-size: 32rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+}
+
+.placeholder-sub {
+  font-size: 24rpx;
+  color: #cccccc;
+}
+
+/* 工具栏 */
+.tool-panel {
+  background-color: #ffffff;
+  padding: 20rpx;
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.tool-row {
+  display: flex;
+  gap: 15rpx;
+}
+
+.tool-item {
+  flex: 1;
+  background-color: #f0f0f0;
+  color: #333333;
+  border: none;
+  padding: 15rpx;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+}

@@ -1,0 +1,107 @@
+<view class="container">
+  <!-- 计划生成器 -->
+  <view class="generator" wx:if="{{!hasPlan}}">
+    <view class="generator-header">
+      <text class="generator-title">学习计划生成器</text>
+      <text class="generator-subtitle">AI帮你制定最优复习方案</text>
+    </view>
+    
+    <view class="form-section">
+      <view class="form-item">
+        <text class="form-label">考试日期</text>
+        <picker mode="date" bindchange="onExamDateChange" value="{{examDate}}">
+          <view class="picker-value {{examDate ? '' : 'placeholder'}}">
+            {{examDate || '请选择考试日期'}}
+          </view>
+        </picker>
+      </view>
+      
+      <view class="form-item">
+        <text class="form-label">每日可用时间</text>
+        <view class="slider-container">
+          <slider 
+            min="1" 
+            max="8" 
+            step="0.5"
+            value="{{dailyHours}}" 
+            bindchange="onDailyHoursChange"
+            show-value="{{false}}"
+          />
+          <text class="slider-value">{{dailyHours}}小时/天</text>
+        </view>
+      </view>
+      
+      <view class="form-item">
+        <text class="form-label">待完成任务</text>
+        <textarea 
+          class="textarea-input" 
+          placeholder="请输入您的待完成任务，如：英语单词200个、数据结构"
+          value="{{pendingTasks}}"
+          bindinput="onPendingTasksInput"
+          maxlength="500"
+          auto-height
+        />
+      </view>
+      
+      <view class="form-item">
+        <text class="form-label">考试科目</text>
+        <input 
+          class="text-input" 
+          placeholder="请输入考试科目，如：考研"
+          value="{{examSubject}}"
+          bindinput="onExamSubjectInput"
+        />
+      </view>
+      
+      <button class="generate-button {{generating ? 'disabled' : ''}}" bindtap="generatePlan">
+        {{generating ? 'AI生成中...' : 'AI生成计划'}}
+      </button>
+    </view>
+  </view>
+  
+  <!-- 学习计划列表 -->
+  <view class="plan-view" wx:if="{{hasPlan}}">
+    <view class="plan-header">
+      <view class="plan-info">
+        <text class="plan-title">学习计划</text>
+        <text class="plan-subtitle">距考试还有 {{remainingDays}} 天</text>
+      </view>
+      <view class="progress-container">
+        <text class="progress-text">总进度</text>
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{totalProgress}}%"></view>
+        </view>
+        <text class="progress-value">{{totalProgress}}%</text>
+      </view>
+    </view>
+    
+    <!-- 每日卡片竖向排列 -->
+    <view class="day-list">
+      <view class="day-card {{item.status}}" wx:for="{{planData}}" wx:key="date">
+        <view class="day-header">
+          <view class="day-left">
+            <text class="day-date">{{item.date}}</text>
+            <text class="day-weekday">{{item.weekday}}</text>
+          </view>
+          <view class="day-status {{item.status}}">
+            <text wx:if="{{item.status === 'today'}}" class="status-text">进行中</text>
+            <text wx:elif="{{item.status === 'completed'}}" class="status-text">已完成</text>
+            <text wx:else class="status-text">待开始</text>
+          </view>
+        </view>
+        
+        <view class="tasks-list">
+          <view class="task-item {{task.completed ? 'completed' : ''}}" wx:for="{{item.tasks}}" wx:key="id" wx:for-item="task">
+            <view class="task-check {{task.completed ? 'checked' : ''}}" bindtap="toggleTask" data-date="{{item.date}}" data-taskid="{{task.id}}">
+              <text wx:if="{{task.completed}}" class="check-icon">✓</text>
+            </view>
+            <text class="task-text">{{task.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <button class="check-in-button" bindtap="checkIn">今日打卡</button>
+    <button class="regenerate-button" bindtap="regeneratePlan">重新生成计划</button>
+  </view>
+</view>

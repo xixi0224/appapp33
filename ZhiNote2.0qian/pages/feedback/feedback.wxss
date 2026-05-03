@@ -1,0 +1,167 @@
+page {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 40rpx;
+}
+
+.header {
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section {
+  margin-bottom: 30rpx;
+}
+
+.form-label {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.feedback-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.type-item {
+  padding: 15rpx 25rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 50rpx;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.type-item.selected {
+  border-color: #667eea;
+  background-color: #f0f2ff;
+}
+
+.type-text {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.type-item.selected .type-text {
+  color: #667eea;
+  font-weight: bold;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 200rpx;
+  padding: 20rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 15rpx;
+  background-color: #ffffff;
+  font-size: 24rpx;
+  color: #333333;
+  resize: none;
+}
+
+.input {
+  width: 100%;
+  padding: 20rpx;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 15rpx;
+  background-color: #ffffff;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.placeholder {
+  color: #999999;
+}
+
+.count {
+  font-size: 20rpx;
+  color: #999999;
+  text-align: right;
+  margin-top: 10rpx;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 25rpx;
+  background-color: #667eea;
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: bold;
+  border: none;
+  border-radius: 15rpx;
+  margin-top: 40rpx;
+  transition: all 0.3s ease;
+}
+
+.submit-button:active {
+  background-color: #5a6fe0;
+  transform: scale(0.98);
+}
+
+/* 深色模式 */
+page.dark {
+  background-color: #1a1a1a;
+}
+
+.dark .title {
+  color: #ffffff;
+}
+
+.dark .form-label {
+  color: #ffffff;
+}
+
+.dark .type-item {
+  border-color: #3d3d3d;
+  background-color: #2d2d2d;
+}
+
+.dark .type-item.selected {
+  border-color: #667eea;
+  background-color: #1e2a4a;
+}
+
+.dark .type-text {
+  color: #cccccc;
+}
+
+.dark .type-item.selected .type-text {
+  color: #667eea;
+}
+
+.dark .textarea {
+  border-color: #3d3d3d;
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.dark .input {
+  border-color: #3d3d3d;
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+
+.dark .placeholder {
+  color: #666666;
+}
+
+.dark .count {
+  color: #666666;
+}

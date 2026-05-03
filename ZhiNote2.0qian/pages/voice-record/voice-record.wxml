@@ -1,0 +1,45 @@
+<view class="container">
+  <!-- 计时器 -->
+  <view class="timer">
+    <text class="timer-text">{{currentTime}} / {{totalTime}}</text>
+  </view>
+  
+  <!-- 状态文字 -->
+  <view class="status">
+    <text class="status-text">{{statusText}}</text>
+  </view>
+  
+  <!-- 麦克风图标和动画 -->
+  <view class="mic-container">
+    <view class="mic-icon" animation="{{micAnimation}}">
+      <text class="mic-emoji">{{isRecording ? (isPaused ? '⏸️' : '🎤') : '🎙️'}}</text>
+    </view>
+    <!-- 声波动画 -->
+    <view class="wave-container" wx:if="{{isRecording && !isPaused}}">
+      <view class="wave" wx:for="{{5}}" wx:key="index" style="animation-delay: {{index * 0.2}}s;"></view>
+    </view>
+  </view>
+  
+  <!-- 录音控制按钮 -->
+  <view class="bottom-buttons">
+    <button class="button record" bindtap="toggleRecord" disabled="{{isPlaying}}">
+      <text class="button-text">{{isRecording ? '停止录音' : '开始录音'}}</text>
+    </button>
+    <button class="button pause" bindtap="pauseRecord" disabled="{{!isRecording || isPaused}}">
+      <text class="button-text">暂停</text>
+    </button>
+    <button class="button resume" bindtap="resumeRecord" disabled="{{!isRecording || !isPaused}}">
+      <text class="button-text">继续</text>
+    </button>
+  </view>
+
+  <!-- 录音完成后的操作按钮 -->
+  <view class="bottom-buttons" wx:if="{{tempFilePath && !isRecording}}">
+    <button class="button play" bindtap="playAudio">
+      <text class="button-text">{{isPlaying ? '停止播放' : '播放录音'}}</text>
+    </button>
+    <button class="button restart" bindtap="restartRecord">
+      <text class="button-text">重录</text>
+    </button>
+  </view>
+</view>

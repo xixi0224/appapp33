@@ -1,0 +1,27 @@
+<view class="container">
+  <!-- 导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">
+      <text>←</text>
+    </view>
+    <view class="nav-title">{{title}}</view>
+  </view>
+  
+  <!-- 日历热力图 -->
+  <view class="section">
+    <text class="section-title">学习热力图</text>
+    <view class="chart-card">
+      <ec-canvas id="heatmapChart" canvas-id="heatmapChart" ec="{{ heatmapChartOption }}"></ec-canvas>
+    </view>
+  </view>
+  
+  <!-- 最近学习记录 -->
+  <view class="section">
+    <text class="section-title">最近学习记录</text>
+    <view class="record-list">
+      <view class="empty-state">
+        <text class="empty-text">暂无数据</text>
+      </view>
+    </view>
+  </view>
+</view>

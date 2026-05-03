@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="header">
+    <text class="title">上传音频</text>
+  </view>
+
+  <view class="upload-area" bindtap="chooseAudio" wx:if="{{!fileInfo}}">
+    <view class="upload-icon">
+      <text class="icon">☁️</text>
+    </view>
+    <text class="upload-text">点击选择或拖入音频文件</text>
+    <text class="upload-tip">支持格式：mp3, wav, m4a</text>
+  </view>
+
+  <view class="file-info" wx:else>
+    <view class="file-header">
+      <text class="file-name">{{fileInfo.name}}</text>
+      <text class="file-size">{{fileInfo.size}}</text>
+    </view>
+    <view class="file-details">
+      <text class="file-duration">时长：{{fileInfo.duration}}</text>
+    </view>
+    <view class="file-actions">
+      <button class="btn btn-secondary" bindtap="rechooseFile">重新选择</button>
+      <button class="btn btn-primary" bindtap="startUpload" disabled="{{isUploading}}">
+        {{isUploading ? '上传中...' : '开始上传'}}
+      </button>
+    </view>
+    <view class="progress-container" wx:if="{{isUploading}}">
+      <progress percent="{{uploadProgress}}" show-info stroke-width="2" />
+    </view>
+  </view>
+</view>

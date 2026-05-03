@@ -1,0 +1,118 @@
+page {
+  background-color: #1c1c1c;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* 显示屏 */
+.display {
+  background-color: #1c1c1c;
+  padding: 40rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-height: 200rpx;
+}
+
+.expression {
+  font-size: 32rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+  text-align: right;
+  word-break: break-all;
+}
+
+.result {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: right;
+  word-break: break-all;
+}
+
+/* 科学功能键 */
+.scientific-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10rpx;
+  padding: 15rpx;
+  background-color: #2c2c2c;
+}
+
+.sci-key {
+  background-color: #3a3a3a;
+  color: #ff9500;
+  border: none;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  padding: 20rpx 0;
+  font-weight: bold;
+}
+
+.sci-key:active {
+  background-color: #4a4a4a;
+}
+
+/* 基本功能键 */
+.basic-keys {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  padding: 15rpx;
+  background-color: #1c1c1c;
+}
+
+.key-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10rpx;
+}
+
+.key {
+  background-color: #3a3a3a;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  font-size: 36rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: all 0.1s ease;
+}
+
+.key:active {
+  background-color: #4a4a4a;
+  transform: scale(0.95);
+}
+
+.key.number {
+  background-color: #505050;
+}
+
+.key.function {
+  background-color: #3a3a3a;
+  color: #ff9500;
+  font-size: 28rpx;
+}
+
+.key.operator {
+  background-color: #ff9500;
+  font-size: 40rpx;
+}
+
+.key.equals {
+  background-color: #ff9500;
+  grid-column: span 2;
+  width: 210rpx;
+  border-radius: 50rpx;
+}

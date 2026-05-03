@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../ec-canvas/ec-canvas",
+    "share-panel": "../../components/share-panel/share-panel"
+  },
+  "navigationBarTitleText": "ZhiNote-图表"
+}

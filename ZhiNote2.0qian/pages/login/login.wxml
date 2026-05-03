@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="login-form">
+    <view class="logo">
+      <text>📚</text>
+    </view>
+    <view class="title">智能学习助手</view>
+    <view class="subtitle">登录以同步您的学习数据</view>
+    
+    <view class="form-group">
+      <text class="label">用户名</text>
+      <input class="input" placeholder="请输入用户名" bindinput="onUsernameInput" value="{{username}}" />
+    </view>
+    
+    <view class="form-group">
+      <text class="label">密码</text>
+      <input class="input" type="password" placeholder="请输入密码" bindinput="onPasswordInput" value="{{password}}" />
+    </view>
+    
+    <button class="login-btn" bindtap="login">登录</button>
+    
+    <view class="other-options">
+      <text class="register" bindtap="goRegister">注册新账号</text>
+      <text class="forgot" bindtap="forgotPassword">忘记密码？</text>
+    </view>
+    
+    <view class="divider">
+      <text>其他登录方式</text>
+    </view>
+    
+    <view class="third-party-login">
+      <view class="third-party-item" bindtap="loginWithWechat">
+        <text>💬</text>
+        <text>微信登录</text>
+      </view>
+      <view class="third-party-item" bindtap="loginWithPhone">
+        <text>📱</text>
+        <text>手机号登录</text>
+      </view>
+    </view>
+  </view>
+</view>

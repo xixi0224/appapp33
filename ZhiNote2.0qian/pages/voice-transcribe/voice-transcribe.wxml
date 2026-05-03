@@ -1,0 +1,49 @@
+<view class="container">
+  <!-- 音频组件 -->
+  <audio id="audio" src="{{filePath}}" hidden></audio>
+  
+  <!-- 音频播放器 -->
+  <view class="player-container">
+    <view class="player">
+      <button class="play-button" bindtap="togglePlay">
+        <text class="play-icon">{{isPlaying ? '⏸️' : '▶️'}}</text>
+      </button>
+      <view class="progress-container">
+        <text class="time">{{currentTime}}</text>
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{progress}}%"></view>
+        </view>
+        <text class="time">{{duration}}</text>
+      </view>
+      <view class="speed-control">
+        <text class="speed-text" bindtap="showSpeedOptions">{{speed}}x</text>
+        <view class="speed-options" wx:if="{{showSpeedOptions}}">
+          <view class="speed-option" wx:for="{{speeds}}" wx:key="index" bindtap="setSpeed" data-speed="{{item}}">
+            <text class="speed-option-text">{{item}}x</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 转写文字 -->
+  <view class="transcript-container">
+    <text class="section-title">转写结果</text>
+    <view class="transcript">
+      <view wx:if="{{transcript.length > 0}}">
+        <view class="transcript-item" wx:for="{{transcript}}" wx:key="index">
+          <text class="timestamp" bindtap="seekTo" data-time="{{item.time}}">[{{item.time}}]</text>
+          <text class="text">{{item.text}}</text>
+        </view>
+      </view>
+      <view wx:else class="empty-state">
+        <text class="empty-text">正在转写中，请稍候...</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 保存按钮 -->
+  <view class="save-button-container">
+    <button class="save-button" bindtap="saveAsNote">保存为笔记</button>
+  </view>
+</view>

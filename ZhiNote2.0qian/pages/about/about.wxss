@@ -1,0 +1,202 @@
+page {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 40rpx;
+}
+
+.header {
+  margin-bottom: 60rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container {
+  width: 200rpx;
+  height: 200rpx;
+  background-color: #667eea;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(102, 126, 234, 0.3);
+}
+
+.logo {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.info-section {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.app-name {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333333;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.version {
+  font-size: 24rpx;
+  color: #999999;
+  display: block;
+}
+
+.description {
+  background-color: #ffffff;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 40rpx;
+  width: 100%;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.desc-text {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.features {
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+
+.features-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.feature-item {
+  background-color: #ffffff;
+  padding: 20rpx;
+  border-radius: 15rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 40rpx;
+  margin-right: 15rpx;
+}
+
+.feature-text {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.contact {
+  background-color: #ffffff;
+  padding: 30rpx;
+  border-radius: 20rpx;
+  margin-bottom: 40rpx;
+  width: 100%;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.contact-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.contact-text {
+  font-size: 24rpx;
+  color: #666666;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 40rpx;
+}
+
+.copyright-text {
+  font-size: 20rpx;
+  color: #999999;
+}
+
+/* 深色模式 */
+page.dark {
+  background-color: #1a1a1a;
+}
+
+.dark .title {
+  color: #ffffff;
+}
+
+.dark .app-name {
+  color: #ffffff;
+}
+
+.dark .version {
+  color: #cccccc;
+}
+
+.dark .description {
+  background-color: #2d2d2d;
+}
+
+.dark .desc-text {
+  color: #cccccc;
+}
+
+.dark .features-title {
+  color: #ffffff;
+}
+
+.dark .feature-item {
+  background-color: #2d2d2d;
+}
+
+.dark .feature-text {
+  color: #cccccc;
+}
+
+.dark .contact {
+  background-color: #2d2d2d;
+}
+
+.dark .contact-title {
+  color: #ffffff;
+}
+
+.dark .contact-text {
+  color: #cccccc;
+}
+
+.dark .copyright-text {
+  color: #666666;
+}

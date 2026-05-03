@@ -1,0 +1,112 @@
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="user-info" bindtap="goUserProfile">
+    <view class="avatar">
+      <text>{{userInfo ? userInfo.avatar || '👤' : '👤'}}</text>
+    </view>
+    <view class="user-details">
+      <text class="username">{{userInfo ? userInfo.nickname || userInfo.username : '未登录'}}</text>
+      <text class="user-desc">{{userInfo ? '智能学习助手用户' : '点击登录'}}</text>
+    </view>
+    <view class="user-arrow">→</view>
+  </view>
+  
+  <!-- 学习记录统计 -->
+  <view class="section">
+    <text class="section-title">学习记录统计</text>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-value">{{studyStats.totalDuration || 0}}</text>
+        <text class="stat-label">总学习时长(小时)</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{studyStats.totalTasks || 0}}</text>
+        <text class="stat-label">笔记数量</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{studyStats.totalReviews || 0}}</text>
+        <text class="stat-label">复习次数</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 工具箱 -->
+  <view class="section">
+    <text class="section-title">工具箱</text>
+    <view class="tool-grid">
+      <view class="tool-item" bindtap="goPomodoro">
+        <view class="tool-icon pomodoro"></view>
+        <text class="tool-text">番茄钟</text>
+      </view>
+      <view class="tool-item" bindtap="goWordCard">
+        <view class="tool-icon word"></view>
+        <text class="tool-text">单词卡片</text>
+      </view>
+      <view class="tool-item" bindtap="goPdfReader">
+        <view class="tool-icon pdf"></view>
+        <text class="tool-text">PDF 阅读器</text>
+      </view>
+      <view class="tool-item" bindtap="goCalculator">
+        <view class="tool-icon calc"></view>
+        <text class="tool-text">计算器</text>
+      </view>
+      <view class="tool-item" bindtap="goLearningPlan">
+        <view class="tool-icon plan"></view>
+        <text class="tool-text">学习计划</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 导出分享 -->
+  <view class="section">
+    <text class="section-title">导出分享</text>
+    <view class="action-list">
+      <view class="action-item" bindtap="exportPdf">
+        <view class="action-icon pdf"></view>
+        <text class="action-text">导出 PDF 完整笔记</text>
+        <view class="action-arrow"></view>
+      </view>
+      <view class="action-item" bindtap="exportGraph">
+        <view class="action-icon graph"></view>
+        <text class="action-text">导出图谱截图</text>
+        <view class="action-arrow"></view>
+      </view>
+      <view class="action-item" bindtap="shareWechat">
+        <view class="action-icon wechat"></view>
+        <text class="action-text">微信分享卡片</text>
+        <view class="action-arrow"></view>
+      </view>
+      <view class="action-item" bindtap="generateQrCode">
+        <view class="action-icon qrcode"></view>
+        <text class="action-text">生成小程序码</text>
+        <view class="action-arrow"></view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 设置 -->
+  <view class="section">
+    <text class="section-title">设置</text>
+    <view class="action-list">
+      <view class="action-item" bindtap="goSettings">
+        <view class="action-icon setting"></view>
+        <text class="action-text">系统设置</text>
+        <view class="action-arrow"></view>
+      </view>
+      <view class="action-item" bindtap="goAbout">
+        <view class="action-icon about"></view>
+        <text class="action-text">关于我们</text>
+        <view class="action-arrow"></view>
+      </view>
+      <view class="action-item" bindtap="goFeedback">
+        <view class="action-icon feedback"></view>
+        <text class="action-text">意见反馈</text>
+        <view class="action-arrow"></view>
+      </view>
+      <view class="action-item logout-item" bindtap="logout" wx:if="{{userInfo}}">
+        <view class="action-icon logout"></view>
+        <text class="action-text logout-text">退出登录</text>
+      </view>
+    </view>
+  </view>
+</view>
