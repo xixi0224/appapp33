@@ -84,7 +84,7 @@ Page({
     });
 
     wx.request({
-      url: 'http://localhost:8000/api/register',
+      url: `${getApp().globalData.baseUrl}/api/register`,
       method: 'POST',
       data: { 
         username, 

@@ -1,6 +1,6 @@
 App({
   globalData: {
-    baseUrl: 'http://127.0.0.1:8000',
+    baseUrl: 'http://119.29.219.148:8080',
     userInfoUpdated: false
   },
   

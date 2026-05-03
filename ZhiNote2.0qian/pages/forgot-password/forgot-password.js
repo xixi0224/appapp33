@@ -63,7 +63,7 @@ Page({
     });
 
     wx.request({
-      url: 'http://localhost:8000/api/password-reset-request',
+      url: `${getApp().globalData.baseUrl}/api/password-reset-request`,
       method: 'POST',
       data: { email },
       header: {
@@ -147,7 +147,7 @@ Page({
     });
 
     wx.request({
-      url: 'http://localhost:8000/api/password-reset-confirm',
+      url: `${getApp().globalData.baseUrl}/api/password-reset-confirm`,
       method: 'POST',
       data: { 
         token, 

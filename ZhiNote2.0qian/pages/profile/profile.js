@@ -114,7 +114,7 @@ Page({
 
     // 调用后端API更新用户信息
     wx.request({
-      url: `http://localhost:8000/api/user/profile/${userInfo.id}`,
+      url: `${getApp().globalData.baseUrl}/api/user/profile/${userInfo.id}`,
       method: 'PUT',
       data: saveData,
       header: {

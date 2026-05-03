@@ -46,7 +46,7 @@ Page({
     });
 
     wx.request({
-      url: 'http://localhost:8000/api/login',
+      url: `${getApp().globalData.baseUrl}/api/login`,
       method: 'POST',
       data: { username, password },
       header: {
