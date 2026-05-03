@@ -223,7 +223,7 @@ def asr_service(audio_path: str):
         print(f"输出文件: {output_path}")
         
         try:
-            result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=120, shell=True)
+            result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=120)
             if result.returncode != 0:
                 error_msg = result.stderr.decode('utf-8', errors='replace')
                 raise RuntimeError(f"FFmpeg 转换失败: {error_msg}")
@@ -239,25 +239,6 @@ def asr_service(audio_path: str):
     # 获取音频时长
     def get_audio_duration(pcm_path: str) -> float:
         """获取PCM音频时长（秒）"""
-        ffmpeg_path = r"d:\tingting\xixi\计算机设计大赛\ZhiNote2.0\ffmpeg-2026-04-19-git-de18feb0f0-essentials_build\bin\ffmpeg.exe"
-
-        cmd = [
-            ffmpeg_path,
-            "-hide_banner",
-            "-loglevel", "error",
-            "-i", audio_path,
-            "-f", "s16le",
-            "-ar", "16000",
-            "-ac", "1",
-            "-t", "0.01",
-            "NUL"
-        ]
-
-        try:
-            subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=10)
-        except:
-            pass
-
         file_size = os.path.getsize(pcm_path)
         # PCM: 16bit = 2 bytes, 16000Hz, 单声道
         # 每秒字节数 = 16000 * 2 = 32000
