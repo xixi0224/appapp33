@@ -156,10 +156,13 @@ def perform_asr(audio_id: int):
         raise ValueError("Audio not found")
 
     audio_file, status = result
+    # 检查文件是否存在于 uploads/audio 目录
     audio_path = os.path.join("uploads/audio", audio_file)
-
     if not os.path.exists(audio_path):
-        raise ValueError("Audio file not found")
+        # 如果不存在，检查 uploads 目录
+        audio_path = os.path.join("uploads", audio_file)
+        if not os.path.exists(audio_path):
+            raise ValueError("Audio file not found")
 
     text = asr_service(audio_path)
 
