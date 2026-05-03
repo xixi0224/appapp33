@@ -196,13 +196,12 @@ def asr_service(audio_path: str):
     # 使用 FFmpeg 将音频转换为 pcm 格式（16kHz, 单声道）
     def convert_to_pcm(input_path: str) -> str:
         """使用 FFmpeg 将音频转换为 16kHz, 单声道的 PCM 文件"""
-        # 检查 FFmpeg 是否存在（支持 Windows 和 Linux）
-        ffmpeg_path = "/usr/bin/ffmpeg"  # Linux 服务器路径
+        # 检查 FFmpeg 是否存在
+        ffmpeg_path = "/usr/bin/ffmpeg"
         if not os.path.exists(ffmpeg_path):
-            # 尝试 Windows 路径
-            ffmpeg_path = r"d:\tingting\xixi\计算机设计大赛\ZhiNote2.0\ffmpeg-2026-04-19-git-de18feb0f0-essentials_build\bin\ffmpeg.exe"
+            ffmpeg_path = "/usr/local/bin/ffmpeg"
         if not os.path.exists(ffmpeg_path):
-            raise RuntimeError(f"FFmpeg 未找到，请安装 FFmpeg")
+            raise RuntimeError(f"FFmpeg 未找到，请安装: sudo apt install ffmpeg")
         
         output_path = input_path.rsplit('.', 1)[0] + '_converted.pcm'
 

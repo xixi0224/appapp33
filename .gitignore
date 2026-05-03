@@ -1,36 +1,10 @@
-# IDE 配置
 .vscode/
-.idea/
-
-# 操作系统文件
+ffmpeg-*/
+project.config.json
+project.private.config.*
+test_*.py
+node_modules/
+dist/
+build/
 .DS_Store
 Thumbs.db
-
-# FFmpeg 本地安装
-ffmpeg-*/
-
-# 项目配置（可能包含敏感信息）
-project.config.json
-project.private.config.json
-
-# 测试脚本
-test_*.py
-
-# 后端配置
-ZhiNote2.0hou/venv/
-ZhiNote2.0hou/__pycache__/
-ZhiNote2.0hou/app/__pycache__/
-ZhiNote2.0hou/app/**/__pycache__/
-ZhiNote2.0hou/uploads/
-ZhiNote2.0hou/exports/
-ZhiNote2.0hou/.env
-ZhiNote2.0hou/app/config.py
-
-# 前端配置
-ZhiNote2.0qian/node_modules/
-ZhiNote2.0qian/.env
-ZhiNote2.0qian/dist/
-ZhiNote2.0qian/build/
-
-# 日志文件
-*.log
