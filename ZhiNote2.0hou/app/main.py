@@ -57,4 +57,4 @@ def root():
 
 # 静态文件服务 - 音频上传目录
 uploads_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "uploads")
-app.mount("/api/audio", StaticFiles(directory=uploads_dir), name="audio")
+app.mount("/api/audio/uploads", StaticFiles(directory=uploads_dir), name="audio")
