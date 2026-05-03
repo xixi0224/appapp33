@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+import os
 from app.routers.upload import router as upload_router
 from app.routers.analysis import router as analysis_router
 from app.routers.notes import router as notes_router
@@ -52,3 +54,7 @@ app.include_router(auth_router, prefix="/api")
 @app.get("/")
 def root():
     return {"message": "ZhiNote backend is running"}
+
+# 静态文件服务 - 音频上传目录
+uploads_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "uploads")
+app.mount("/api/audio", StaticFiles(directory=uploads_dir), name="audio")
