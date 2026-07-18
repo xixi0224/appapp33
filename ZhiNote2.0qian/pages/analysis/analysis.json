@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "AI分析",
-  "usingComponents": {
-    "ec-canvas": "/pages/ec-canvas/ec-canvas"
-  }
-}

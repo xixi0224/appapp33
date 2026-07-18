@@ -1,24 +1,15 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-import os
-from app.routers.upload import router as upload_router
-from app.routers.analysis import router as analysis_router
-from app.routers.notes import router as notes_router
-from app.routers.visualization import router as visualization_router
-from app.routers.animation import router as animation_router
-from app.routers.content_input import router as content_input_router
-from app.routers.ai_analysis import router as ai_analysis_router
-from app.routers.ai import router as ai_router
-from app.routers.knowledge_structure import router as knowledge_structure_router
-from app.routers.study_analysis import router as study_analysis_router
-from app.routers.study_assist import router as study_assist_router
-from app.routers.learning_plan import router as learning_plan_router
-from app.routers.study_stats import router as study_stats_router
-from app.routers.report import router as report_router
+from fastapi.responses import FileResponse
+from app.routers.agent import router as agent_router
 from app.routers.auth import router as auth_router
+from app.database import init_db
+import os
 
-app = FastAPI(title="ZhiNote Backend")
+init_db()
+
+app = FastAPI(title="ZhiNote Multi-Agent Learning System")
 
 app.add_middleware(
     CORSMiddleware,
@@ -28,33 +19,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(upload_router, prefix="/api")
-app.include_router(analysis_router, prefix="/api")
-app.include_router(notes_router, prefix="/api")
-app.include_router(visualization_router, prefix="/api")
-app.include_router(animation_router, prefix="/api")
-app.include_router(content_input_router, prefix="/api")
-app.include_router(ai_analysis_router, prefix="/api")
-app.include_router(ai_router, prefix="/api")
-app.include_router(knowledge_structure_router, prefix="/api")
-app.include_router(study_analysis_router, prefix="/api")
-app.include_router(study_assist_router, prefix="/api")
-# 学习计划路由
-app.include_router(learning_plan_router, prefix="/api")
-
-# 学习统计路由
-app.include_router(study_stats_router, prefix="/api")
-
-# 学习报告路由
-app.include_router(report_router, prefix="/api")
-
-# 认证路由
 app.include_router(auth_router, prefix="/api")
+app.include_router(agent_router, prefix="/api")
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def root():
-    return {"message": "ZhiNote backend is running"}
+    if os.path.exists("index.html"):
+        return FileResponse("index.html")
+    return {"message": "ZhiNote Multi-Agent Learning System is running"}
 
-# 静态文件服务 - 音频上传目录
-uploads_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "uploads")
-app.mount("/api/audio/uploads", StaticFiles(directory=uploads_dir), name="audio")
+@app.get("/{full_path:path}")
+async def serve_frontend(full_path: str):
+    if full_path.startswith("api/") or full_path.startswith("static/"):
+        raise HTTPException(status_code=404, detail="Not found")
+    if os.path.exists("index.html"):
+        return FileResponse("index.html")
+    raise HTTPException(status_code=404, detail="Not found")

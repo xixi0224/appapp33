@@ -1,11 +1,10 @@
 fastapi
 uvicorn
-pymysql
-pdfplumber
-python-docx
-python-multipart
-dashscope
-textract
-olefile
 python-dotenv
+dashscope
+spark-ai-python
 gunicorn
+psycopg2-binary
+sqlalchemy
+python-docx
+lxml
