@@ -195,14 +195,24 @@ const handleUserCommand = (command) => {
 
 <style scoped>
 .app-container {
+<<<<<<< HEAD
   min-height: 100vh;
   width: 100%;
+=======
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+>>>>>>> 4f174552fdd0bf3d635780d8f0719457d5ed4a57
   background: #f8fafc;
 }
 
 .el-container {
+<<<<<<< HEAD
   min-height: 100vh;
   display: flex;
+=======
+  height: 100%;
+>>>>>>> 4f174552fdd0bf3d635780d8f0719457d5ed4a57
 }
 
 .logo {
@@ -345,6 +355,7 @@ const handleUserCommand = (command) => {
 .fade-leave-to {
   opacity: 0;
 }
+<<<<<<< HEAD
 
 .el-aside {
   position: sticky;
@@ -352,4 +363,6 @@ const handleUserCommand = (command) => {
   height: 100vh;
   flex-shrink: 0;
 }
+=======
+>>>>>>> 4f174552fdd0bf3d635780d8f0719457d5ed4a57
 </style>

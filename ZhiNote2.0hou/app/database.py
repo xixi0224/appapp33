@@ -14,9 +14,15 @@ MYSQL_USER = os.getenv("MYSQL_USER", "")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "")
 MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "zhinote")
 
+<<<<<<< HEAD
 SQLALCHEMY_DATABASE_URL = "sqlite:///./zhinote.db"
 
 if MYSQL_USER:
+=======
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./zhinote.db")
+
+if not SQLALCHEMY_DATABASE_URL.startswith("postgres") and not SQLALCHEMY_DATABASE_URL.startswith("postgresql") and MYSQL_USER:
+>>>>>>> 4f174552fdd0bf3d635780d8f0719457d5ed4a57
     try:
         if MYSQL_PASSWORD:
             encoded_password = urllib.parse.quote_plus(MYSQL_PASSWORD)
@@ -29,10 +35,19 @@ if MYSQL_USER:
 try:
     if "mysql" in SQLALCHEMY_DATABASE_URL:
         engine = create_engine(SQLALCHEMY_DATABASE_URL)
+<<<<<<< HEAD
     else:
         engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 except Exception as e:
     print(f"MySQL连接失败，使用SQLite: {e}")
+=======
+    elif "postgres" in SQLALCHEMY_DATABASE_URL or "postgresql" in SQLALCHEMY_DATABASE_URL:
+        engine = create_engine(SQLALCHEMY_DATABASE_URL)
+    else:
+        engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
+except Exception as e:
+    print(f"数据库连接失败，使用SQLite: {e}")
+>>>>>>> 4f174552fdd0bf3d635780d8f0719457d5ed4a57
     SQLALCHEMY_DATABASE_URL = "sqlite:///./zhinote.db"
     engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 

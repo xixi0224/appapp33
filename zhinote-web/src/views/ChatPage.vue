@@ -325,13 +325,22 @@ onMounted(async () => {
 
 <style scoped>
 .chat-page {
+<<<<<<< HEAD
   min-height: 100vh;
   width: 100%;
+=======
+  height: 100vh;
+  width: 100vw;
+>>>>>>> 4f174552fdd0bf3d635780d8f0719457d5ed4a57
   display: flex;
   flex-direction: column;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
+=======
+  overflow: hidden;
+>>>>>>> 4f174552fdd0bf3d635780d8f0719457d5ed4a57
 }
 
 .chat-header {

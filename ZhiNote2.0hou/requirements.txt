@@ -4,3 +4,10 @@ python-dotenv
 dashscope
 spark-ai-python
 gunicorn
+<<<<<<< HEAD
+=======
+psycopg2-binary
+sqlalchemy
+python-docx
+lxml
+>>>>>>> 4f174552fdd0bf3d635780d8f0719457d5ed4a57
