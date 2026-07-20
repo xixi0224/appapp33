@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "时间线详情",
-  "usingComponents": {
-    "ec-canvas": "../ec-canvas/ec-canvas"
-  }
-}

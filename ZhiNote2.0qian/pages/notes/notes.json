@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "ZhiNote-笔记",
-  "usingComponents": {
-    "share-panel": "../../components/share-panel/share-panel"
-  }
-}

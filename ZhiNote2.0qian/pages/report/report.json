@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "学习报告",
-  "usingComponents": {
-    "share-panel": "../../components/share-panel/share-panel",
-    "ec-canvas": "../ec-canvas/ec-canvas"
-  }
-}
