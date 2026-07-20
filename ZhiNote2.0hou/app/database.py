@@ -14,15 +14,9 @@ MYSQL_USER = os.getenv("MYSQL_USER", "")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "")
 MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "zhinote")
 
-<<<<<<< HEAD
-SQLALCHEMY_DATABASE_URL = "sqlite:///./zhinote.db"
-
-if MYSQL_USER:
-=======
 SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./zhinote.db")
 
 if not SQLALCHEMY_DATABASE_URL.startswith("postgres") and not SQLALCHEMY_DATABASE_URL.startswith("postgresql") and MYSQL_USER:
->>>>>>> 4f174552fdd0bf3d635780d8f0719457d5ed4a57
     try:
         if MYSQL_PASSWORD:
             encoded_password = urllib.parse.quote_plus(MYSQL_PASSWORD)
@@ -35,19 +29,12 @@ if not SQLALCHEMY_DATABASE_URL.startswith("postgres") and not SQLALCHEMY_DATABAS
 try:
     if "mysql" in SQLALCHEMY_DATABASE_URL:
         engine = create_engine(SQLALCHEMY_DATABASE_URL)
-<<<<<<< HEAD
-    else:
-        engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
-except Exception as e:
-    print(f"MySQL连接失败，使用SQLite: {e}")
-=======
     elif "postgres" in SQLALCHEMY_DATABASE_URL or "postgresql" in SQLALCHEMY_DATABASE_URL:
         engine = create_engine(SQLALCHEMY_DATABASE_URL)
     else:
         engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 except Exception as e:
     print(f"数据库连接失败，使用SQLite: {e}")
->>>>>>> 4f174552fdd0bf3d635780d8f0719457d5ed4a57
     SQLALCHEMY_DATABASE_URL = "sqlite:///./zhinote.db"
     engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 
@@ -261,90 +248,4 @@ class KnowledgePoint(Base):
 
 def init_db():
     Base.metadata.create_all(bind=engine)
-    
-    if "mysql" in str(engine.url):
-        from sqlalchemy import text
-        migrations = [
-            "ALTER TABLE uploaded_documents ADD COLUMN file_size INT DEFAULT 0",
-            "ALTER TABLE uploaded_documents ADD COLUMN processed BOOLEAN DEFAULT FALSE",
-            "ALTER TABLE uploaded_documents ADD COLUMN topics_count INT DEFAULT 0",
-            "ALTER TABLE uploaded_documents ADD COLUMN query_count INT DEFAULT 0",
-            "ALTER TABLE uploaded_documents ADD COLUMN full_analysis JSON",
-            "ALTER TABLE uploaded_documents ADD COLUMN status VARCHAR(20) DEFAULT 'pending'",
-            "ALTER TABLE uploaded_documents ADD COLUMN subject VARCHAR(100)",
-            "ALTER TABLE uploaded_documents ADD COLUMN chapter VARCHAR(200)",
-            "ALTER TABLE uploaded_documents ADD COLUMN vector_index_id VARCHAR(100)",
-            "ALTER TABLE uploaded_documents ADD COLUMN source_type VARCHAR(50) DEFAULT 'manual'",
-            "ALTER TABLE mistake_records ADD COLUMN question_id INT DEFAULT 0",
-            "ALTER TABLE mistake_records ADD COLUMN question_type VARCHAR(20) DEFAULT 'choice'",
-            "ALTER TABLE mistake_records ADD COLUMN error_detail TEXT",
-            "ALTER TABLE mistake_records ADD COLUMN difficulty VARCHAR(20) DEFAULT 'medium'",
-            "ALTER TABLE mistake_records ADD COLUMN related_document_id INT DEFAULT 0",
-            "ALTER TABLE mistake_records ADD COLUMN source_type VARCHAR(20) DEFAULT 'agent'",
-            "ALTER TABLE mistake_records ADD COLUMN subject VARCHAR(100)",
-            "ALTER TABLE mistake_records ADD COLUMN topic VARCHAR(200)",
-            "ALTER TABLE mistake_records ADD COLUMN reviewed BOOLEAN DEFAULT FALSE",
-            "ALTER TABLE mistake_records ADD COLUMN review_count INT DEFAULT 0",
-            """
-            CREATE TABLE IF NOT EXISTS question_bank (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                session_id VARCHAR(50),
-                subject VARCHAR(100),
-                topic VARCHAR(200),
-                question TEXT,
-                question_type VARCHAR(20) DEFAULT 'choice',
-                options JSON,
-                correct_answer TEXT,
-                analysis TEXT,
-                difficulty VARCHAR(20) DEFAULT 'medium',
-                error_tags JSON,
-                related_document_id INT DEFAULT 0,
-                generated_from VARCHAR(100) DEFAULT 'agent',
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                INDEX idx_session_id (session_id)
-            )
-            """,
-            """
-            CREATE TABLE IF NOT EXISTS knowledge_points (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                document_id INT,
-                session_id VARCHAR(50),
-                subject VARCHAR(100),
-                chapter VARCHAR(200),
-                name VARCHAR(200),
-                definition TEXT,
-                difficulty VARCHAR(20) DEFAULT 'medium',
-                is_key BOOLEAN DEFAULT FALSE,
-                is_exam_point BOOLEAN DEFAULT FALSE,
-                error_tags JSON,
-                prerequisites JSON,
-                structured_data JSON,
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                INDEX idx_document_id (document_id),
-                INDEX idx_session_id_kp (session_id)
-            )
-            """,
-            "ALTER TABLE users ADD COLUMN avatar VARCHAR(500)",
-            "ALTER TABLE users ADD COLUMN major VARCHAR(100)",
-            "ALTER TABLE users ADD COLUMN learning_direction VARCHAR(200)",
-            "ALTER TABLE users ADD COLUMN preferences JSON",
-            "ALTER TABLE users ADD COLUMN is_active BOOLEAN",
-            "ALTER TABLE users ADD COLUMN role VARCHAR(20)",
-            "ALTER TABLE users ADD COLUMN updated_at DATETIME",
-            "ALTER TABLE users ADD COLUMN session_id VARCHAR(50)",
-            "UPDATE users SET avatar = '' WHERE avatar IS NULL",
-            "UPDATE users SET major = '' WHERE major IS NULL",
-            "UPDATE users SET learning_direction = '' WHERE learning_direction IS NULL",
-            "UPDATE users SET preferences = '{}' WHERE preferences IS NULL",
-            "UPDATE users SET is_active = 1 WHERE is_active IS NULL",
-            "UPDATE users SET role = 'student' WHERE role IS NULL",
-            "UPDATE users SET updated_at = NOW() WHERE updated_at IS NULL"
-        ]
-        for sql in migrations:
-            try:
-                with engine.begin() as conn:
-                    conn.execute(text(sql))
-                print(f"Migration OK: {sql[:50]}...")
-            except Exception as e:
-                print(f"Migration skipped: {e}")
-        print("MySQL migrations completed")
+    print("Database tables created successfully")
